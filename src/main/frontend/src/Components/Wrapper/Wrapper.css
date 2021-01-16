@@ -1,0 +1,12 @@
+.wrapper {
+  background: rgb(202, 237, 170);
+  margin: 0 auto;
+  height: 1500px;
+  min-height: 755px;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0 20px 0 20px;
+  justify-content: space-around;
+  align-content: flex-start;
+  overflow: visible;
+}

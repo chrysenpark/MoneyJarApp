@@ -1,0 +1,5 @@
+.ScrollBox {
+    overflow-y: scroll;
+    height: 300px;
+    resize: none;
+}
