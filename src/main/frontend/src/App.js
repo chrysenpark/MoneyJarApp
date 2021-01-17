@@ -8,7 +8,6 @@ import Message from "./Components/Message/Message";
 
 
 function App()  {
-    document.title = 'theJarBar';
     return (
         <Wrapper>
             <Message message={""} />
