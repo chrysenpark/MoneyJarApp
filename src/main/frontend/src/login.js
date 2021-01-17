@@ -39,7 +39,7 @@ const Login = ({onLoginSuccess}) => {
 
     return (
         <Wrapper>
-            <div  style= {{position: 'absolute', left: 80}}>
+            <div  style= {{position: 'relative', right: 800}}>
                 <Button buttonStyle="btn--primary--solid" onClick={() =>  {history.push("/")}}>Home</Button>
             </div>
             <Title main = {"Log In"}/>
