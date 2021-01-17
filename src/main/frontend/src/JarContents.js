@@ -8,7 +8,6 @@ import Title from "./Components/Title";
 import OpenJar from "./Components/OpenJar";
 import {get} from "lodash-es";
 import Scrollbar from "react-scrollbars-custom";
-import Jar from "./Components/Jar";
 import {useLocation} from "react-router";
 
 
@@ -213,7 +212,7 @@ function JarContents() {
                 <h2>{"Transactions"}</h2>
                 {transactions.map((transactionInfo, id) => (
                     <div key={id}>
-                        <h4>{getType(transactionInfo) +  "    " + "$" + getTransactionsAmount(transactionInfo) + "  " +  getUsername(transactionInfo) + " " + getDate(transactionInfo)}</h4>
+                        <h4>{getType(transactionInfo) +  "  $" + getTransactionsAmount(transactionInfo) + "  " +  getUsername(transactionInfo) + " " + getDate(transactionInfo)}</h4>
                     </div>
                 ))}
             </Scrollbar>

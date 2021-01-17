@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.1d6f7f1e.chunk.css",
-    "main.js": "/static/js/main.44f790f7.chunk.js",
-    "main.js.map": "/static/js/main.44f790f7.chunk.js.map",
+    "main.css": "/static/css/main.507b23c9.chunk.css",
+    "main.js": "/static/js/main.7601f954.chunk.js",
+    "main.js.map": "/static/js/main.7601f954.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c60b7f5c.js",
     "runtime-main.js.map": "/static/js/runtime-main.c60b7f5c.js.map",
-    "static/js/2.cdb7da86.chunk.js": "/static/js/2.cdb7da86.chunk.js",
-    "static/js/2.cdb7da86.chunk.js.map": "/static/js/2.cdb7da86.chunk.js.map",
+    "static/js/2.f77527be.chunk.js": "/static/js/2.f77527be.chunk.js",
+    "static/js/2.f77527be.chunk.js.map": "/static/js/2.f77527be.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.1d6f7f1e.chunk.css.map": "/static/css/main.1d6f7f1e.chunk.css.map",
-    "static/js/2.cdb7da86.chunk.js.LICENSE.txt": "/static/js/2.cdb7da86.chunk.js.LICENSE.txt",
-    "static/media/OpenJar.css": "/static/media/OpenJar.722458ad.jpeg",
-    "static/media/Jars.css": "/static/media/jar.722458ad.jpeg"
+    "static/css/main.507b23c9.chunk.css.map": "/static/css/main.507b23c9.chunk.css.map",
+    "static/js/2.f77527be.chunk.js.LICENSE.txt": "/static/js/2.f77527be.chunk.js.LICENSE.txt",
+    "static/media/MoneyJars.b94eaac2.png": "/static/media/MoneyJars.b94eaac2.png",
+    "static/media/SaveUpPage.56e3313f.png": "/static/media/SaveUpPage.56e3313f.png",
+    "static/media/Jars.css": "/static/media/jarCloseHalf.01ba3bc7.png",
+    "static/media/OpenJar.css": "/static/media/jarOpenHalf.86b9b0a5.png"
   },
   "entrypoints": [
     "static/js/runtime-main.c60b7f5c.js",
-    "static/js/2.cdb7da86.chunk.js",
-    "static/css/main.1d6f7f1e.chunk.css",
-    "static/js/main.44f790f7.chunk.js"
+    "static/js/2.f77527be.chunk.js",
+    "static/css/main.507b23c9.chunk.css",
+    "static/js/main.7601f954.chunk.js"
   ]
 }

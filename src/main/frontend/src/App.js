@@ -3,12 +3,12 @@ import history from './history';
 import Button from "./Components/Buttons";
 import React from "react";
 import Wrapper from "./Components/Wrapper";
-import Title from "./Components/Title";
-import image from './MoneyJars.png'
+import image from './theJarBar.png'
 import Message from "./Components/Message/Message";
 
 
 function App()  {
+    document.title = 'theJarBar';
     return (
         <Wrapper>
             <Message message={""} />
