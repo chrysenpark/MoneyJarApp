@@ -11,7 +11,7 @@ import Title from "./Components/Title";
 const getUsersJars = () => {
     const username = window.localStorage.getItem('user');
     return axios
-        .get('http://moneyjar-env.eba-spmiem8y.us-east-2.elasticbeanstalk.com/api/jars/' + username)
+        .get('https://chrysenapi.com/api/jars/' + username)
         .then((jars) => {
             console.log(jars.data);
             return jars.data;
@@ -24,7 +24,7 @@ const createJar = (event) => {
     event.preventDefault();
     const username = window.localStorage.getItem('user');
     return axios
-        .post('http://moneyjar-env.eba-spmiem8y.us-east-2.elasticbeanstalk.com/api/jars/create/' + username,
+        .post('https://chrysenapi.com/api/jars/create/' + username,
             'untitled', {
                 "headers": {
                     "content-type": "application/json",
@@ -42,7 +42,7 @@ const createJar = (event) => {
 const logOut = (event) => {
     event.preventDefault();
     const username = window.localStorage.getItem('user');
-    axios.delete('http://moneyjar-env.eba-spmiem8y.us-east-2.elasticbeanstalk.com/api/logins/' + username
+    axios.delete('https://chrysenapi.com/api/logins/' + username
     ).then((response) => {
         console.log(response);
         history.push("/login");

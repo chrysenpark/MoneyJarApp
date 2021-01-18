@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <unzip src="/Users/ChrysenPark/Downloads/MoneyJarApp/target/MoneyJars-1.0-SNAPSHOT.jar" dest="/Users/ChrysenPark/Downloads/MoneyJarApp/target/MoneyJars-1.0-SNAPSHOT"/>
+  <copy todir="/Users/ChrysenPark/Downloads/MoneyJarApp/target/MoneyJars-1.0-SNAPSHOT/" overwrite="false">
+    <fileset includes=".ebextensions/**" dir="./"/>
+  </copy>
+  <zip basedir="/Users/ChrysenPark/Downloads/MoneyJarApp/target/MoneyJars-1.0-SNAPSHOT" destfile="/Users/ChrysenPark/Downloads/MoneyJarApp/target/MoneyJars-1.0-SNAPSHOT.jar" compress="false"/>
+</target>
+</project>

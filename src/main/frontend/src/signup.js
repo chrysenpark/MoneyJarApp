@@ -28,7 +28,7 @@ const Signup = () => {
 
     const signUp = (event) => {
         event.preventDefault();
-        axios.post('http://moneyjar-env.eba-spmiem8y.us-east-2.elasticbeanstalk.com/api/users', {
+        axios.post('https://chrysenapi.com/api/users', {
             email: email,
             username: username,
             password: password,

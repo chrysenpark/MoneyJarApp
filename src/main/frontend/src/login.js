@@ -25,7 +25,7 @@ const Login = ({onLoginSuccess}) => {
 
     const logIn = (event) => {
         event.preventDefault();
-        axios.post('http://moneyjar-env.eba-spmiem8y.us-east-2.elasticbeanstalk.com/api/login', {
+        axios.post('https://chrysenapi.com/api/login/', {
             username: username,
             password: password,
         }).then((response) => {
