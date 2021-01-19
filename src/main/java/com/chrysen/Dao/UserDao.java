@@ -101,7 +101,7 @@ public class UserDao {
         final String sql = "INSERT INTO users (id, email, username, password, numOfJars) VALUES(?, ?, ?, ?, ?)";
         final int id = user.getId();
         final String email = user.getEmail();
-        final String username = user.getUsername();
+        final String username = user.getUsername().toLowerCase();
         final String password = user.getPassword();
         final int numOfJars = 0;
         jdbcTemplate.update(sql, new Object[] {id, email, username, password, numOfJars});
