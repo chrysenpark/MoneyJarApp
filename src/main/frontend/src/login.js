@@ -39,7 +39,7 @@ const Login = ({onLoginSuccess}) => {
 
     return (
         <Wrapper>
-            <div  style= {{position: 'relative', right: 800}}>
+            <div  style= {{position: 'relative', left: 100}}>
                 <Button buttonStyle="btn--primary--solid" onClick={() =>  {history.push("/")}}>Home</Button>
             </div>
             <Title main = {"Log In"}/>
@@ -71,7 +71,8 @@ const Login = ({onLoginSuccess}) => {
                 <input type="submit" value="Submit" />
                 {loginError && <p style={{color: 'red'}}>{loginError}</p>}
             </form>
-            <img src={image} alt="jars" width="auto" height="auto"/>
+            <img src={image} alt="jars" style= {{position: 'relative', top: 0}} width="auto" height="auto"/>
+
         </Wrapper>
     );
 };

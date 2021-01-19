@@ -12,10 +12,12 @@ import {useLocation} from "react-router";
 
 
 
-const jarInfo = JSON.parse(localStorage.getItem('jar'));
+const jarID = parseInt(localStorage.getItem("jarID"));
 const username = localStorage.getItem('user');
+const jar = JSON.parse(localStorage.getItem("jar"));
 
 function JarContents() {
+    const [jarInfo, setJarInfo] = useState(jar);
     const [donation, setDonation] = useState('');
     const [withdrawal, setWithdrawal] = useState('');
     const [contributor, setContributor] = useState('Enter Username');
@@ -40,11 +42,32 @@ function JarContents() {
             console.log(err);
         });
     }, []);
+    useEffect(() => {
+        openJar().then((data) => {
+            setJarInfo(data);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, []);
+
+
+    const openJar = () => {
+        return axios
+            .get('https://chrysenapi.com/api/jars/open/' + jarID)
+            .then((response) => {
+                console.log(response.data);
+                return response.data;
+            }).catch((err) => {
+                console.log(err);
+            });
+    };
+
+
 
     const donate = (event) => {
         event.preventDefault();
         const username = window.localStorage.getItem('user');
-        return axios.put('https://chrysenapi.com/api/jars/donate/' + username + "/" + jarInfo.id,  donation, {
+        return axios.put('https://chrysenapi.com/api/jars/donate/' + username + "/" + jarID,  donation, {
             "headers": {
                 "content-type": "application/json",
             },
@@ -56,8 +79,8 @@ function JarContents() {
                 'Successfully donated!',
             );
             setDonateSuccess(message);
-            jarInfo.amount = parseInt(jarInfo.amount) + parseInt(donation);
-            localStorage.setItem('jar', JSON.stringify(jarInfo));
+            //jarInfo.amount = parseInt(jarInfo.amount) + parseInt(donation);
+            //localStorage.setItem('jar', JSON.stringify(jarInfo));
             window.location.reload();
             console.log(response);
         }).catch((err) => {
@@ -68,7 +91,7 @@ function JarContents() {
     const withdraw = (event) => {
         event.preventDefault();
         const username = window.localStorage.getItem('user');
-        return axios.put('https://chrysenapi.com/api/jars/withdraw/' + username + "/" + jarInfo.id,  withdrawal, {
+        return axios.put('https://chrysenapi.com/api/jars/withdraw/' + username + "/" + jarID,  withdrawal, {
                 "headers": {
                     "content-type": "application/json",
                 },
@@ -80,8 +103,8 @@ function JarContents() {
                 'Successfully withdrawn!',
             );
             setWithdrawSuccess(message);
-            jarInfo.amount = parseInt(jarInfo.amount) - parseInt(withdrawal);
-            localStorage.setItem('jar', JSON.stringify(jarInfo));
+            //jarInfo.amount = parseInt(jarInfo.amount) - parseInt(withdrawal);
+            //localStorage.setItem('jar', JSON.stringify(jarInfo));
             window.location.reload();
             console.log(response);
         }).catch((err) => {
@@ -92,7 +115,7 @@ function JarContents() {
 
     const getTransactions = () => {
         return axios
-            .get('https://chrysenapi.com/api/jars/transactions/' + jarInfo.id)
+            .get('https://chrysenapi.com/api/jars/transactions/' + jarID)
             .then((response) => {
                 console.log(response.data);
                 return response.data;
@@ -103,7 +126,7 @@ function JarContents() {
 
     const shareJar = (event) => {
         event.preventDefault();
-        return axios.post('https://chrysenapi.com/api/jars/share/' + jarInfo.id, contributor, {
+        return axios.post('https://chrysenapi.com/api/jars/share/' + jarID, contributor, {
                 "headers": {
                     "content-type": "application/json",
                 },
@@ -124,7 +147,7 @@ function JarContents() {
 
     const renameJar = (event) => {
         event.preventDefault();
-        return axios.put('https://chrysenapi.com/api/jars/rename/' + jarInfo.id, rename, {
+        return axios.put('https://chrysenapi.com/api/jars/rename/' + jarID, rename, {
                 "headers": {
                     "content-type": "application/json",
                 },
@@ -136,8 +159,8 @@ function JarContents() {
                 'Successfully renamed!',
             );
             setRenameSuccess(message);
-            jarInfo.name = rename;
-            localStorage.setItem('jar', JSON.stringify(jarInfo));
+            //jarInfo.name = rename;
+            //localStorage.setItem('jar', JSON.stringify(jarInfo));
             window.location.reload();
             console.log(response);
         }).catch((err) => {
@@ -147,10 +170,10 @@ function JarContents() {
 
     const deleteJar = (event) => {
         event.preventDefault();
-        axios.delete('https://chrysenapi.com/api/jars/' + username + '/' + jarInfo.id
+        axios.delete('https://chrysenapi.com/api/jars/' + username + '/' + jarID
         ).then((response) => {
             history.push("/dashboard");
-            localStorage.removeItem('jar');
+            //localStorage.removeItem('jar');
             window.location.reload();
         }).catch((err) => {
             console.log(err);
@@ -190,6 +213,7 @@ function JarContents() {
         setShareError(false);
     };
 
+
     return (
         <Wrapper>
             <div  style= {{position: 'absolute', left: 80}}>
@@ -208,7 +232,7 @@ function JarContents() {
                 Name = {jarInfo.name}
                 Amount = {jarInfo.amount}
             />
-            <Scrollbar style={{ width: 300, height: 200, position: 'relative', top:50}} trackYVisible>
+            <Scrollbar style={{ width: 300, height: 200, position: 'relative', top:50}} >
                 <h2>{"Transactions"}</h2>
                 {transactions.map((transactionInfo, id) => (
                     <div key={id}>

@@ -84,8 +84,6 @@ public class UserController {
                 } else {
                     throw new ApiRequestException("Wrong password");
                 }
-            } else {
-                throw new ApiRequestException("Already logged in");
             }
         } else {
             throw new ApiRequestException("Username doesn't exists");

@@ -59,6 +59,7 @@ public class JarController {
 
     @RequestMapping(value = "/jars/donate/{username}/{jarID}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void donateJar(@RequestBody int amount, @PathVariable("username") String username, @PathVariable("jarID") int jarID) {
+        if(amount < 0) throw new ApiRequestException("Cannot Donate negatives");
         LocalDate date = java.time.LocalDate.now();
         Transaction transaction = new Transaction(jarID,"D", amount, username, date.toString());
         jarService.donate(transaction, username);
@@ -66,6 +67,7 @@ public class JarController {
 
     @RequestMapping(value = "/jars/withdraw/{username}/{jarID}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void withdrawJar(@RequestBody int amount, @PathVariable("username") String username, @PathVariable("jarID") int jarID) {
+        if(amount < 0) throw new ApiRequestException("Cannot withdraw negatives");
         LocalDate date = java.time.LocalDate.now();
         Transaction transaction = new Transaction(jarID,"W", amount, username, date.toString());
         jarService.withdraw(transaction, username);

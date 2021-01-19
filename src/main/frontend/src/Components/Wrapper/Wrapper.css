@@ -1,11 +1,12 @@
 .wrapper {
   background: rgb(204, 231, 208);
   margin: 0 auto;
-  height: 1500px;
+  height: auto;
+  width: auto;
   min-height: 755px;
   display: flex;
   flex-flow: row wrap;
-  padding: 0 20px 0 20px;
+  padding: 0 20px 150px 20px;
   justify-content: space-around;
   align-content: flex-start;
   overflow: visible;

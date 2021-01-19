@@ -47,7 +47,7 @@ const Signup = () => {
 
     return (
         <Wrapper>
-            <div  style= {{position: 'relative', right: 800}}>
+            <div  style= {{position: 'relative', left: 100}}>
                 <Button buttonStyle={"btn--rank--solid"} onClick={() =>  {history.push("/")}}>Home</Button>
             </div>
             <Title main = {"Sign Up"}/>

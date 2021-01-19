@@ -51,18 +51,24 @@ const logOut = (event) => {
     });
 };
 
-
-
 function Dashboard() {
     const [jarInfos, setJarInfos] = useState([]);
+    const [order, setOrder] = useState("");
 
     useEffect(() => {
         getUsersJars().then((jarData) => {
-            setJarInfos(jarData);
+            const sortedData = jarData.sort(function (a,b) {
+                return getJarName(a).localeCompare(getJarName(b))})
+            setJarInfos(sortedData);
         }).catch((err) => {
             console.log(err);
         });
     }, []);
+
+    const getJarID = (jarInfo) => {
+        const {id} = jarInfo;
+        return `${id}`
+    };
 
     const getJarName = (jarInfo) => {
         const {name} = jarInfo;
@@ -83,6 +89,7 @@ function Dashboard() {
     };
 
 
+
     return (
         <Wrapper>
             <Title main = {"Money Jars"}/>
@@ -94,14 +101,16 @@ function Dashboard() {
                         Name = {getJarName(jarInfo)}
                         Amount = {getJarAmount(jarInfo)}
                         onClick={() => {
-                            const jar =  JSON.stringify(jarInfo);
-                            localStorage.setItem('jar', jar);
+                            //const jar =  JSON.stringify(jarInfo);
+                            localStorage.setItem('jarID', getJarID(jarInfo));
+                            localStorage.setItem('jar', JSON.stringify(jarInfo));
                             history.push("/openJar");
                             window.location.reload();
                         }}
                     />
                 </div>
             ))}
+
 
             <Message message={""} />
             <Button type ="button"  buttonStyle="btn--rank--solid" buttonSize="btn-small" onClick={createJar}>Create Jar</Button>
