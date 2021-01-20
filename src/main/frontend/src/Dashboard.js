@@ -7,9 +7,8 @@ import Wrapper from "./Components/Wrapper";
 import Message from "./Components/Message";
 import Title from "./Components/Title";
 
-
+const username = window.localStorage.getItem('user').toLowerCase();
 const getUsersJars = () => {
-    const username = window.localStorage.getItem('user');
     return axios
         .get('https://chrysenapi.com/api/jars/' + username)
         .then((jars) => {
@@ -22,7 +21,6 @@ const getUsersJars = () => {
 
 const createJar = (event) => {
     event.preventDefault();
-    const username = window.localStorage.getItem('user');
     return axios
         .post('https://chrysenapi.com/api/jars/create/' + username,
             'untitled', {
@@ -41,9 +39,7 @@ const createJar = (event) => {
 
 const logOut = (event) => {
     event.preventDefault();
-    const username = window.localStorage.getItem('user');
-
-    axios.delete('https://chrysenapi.com/api/logins/' + username.toLowerCase()
+    axios.delete('https://chrysenapi.com/api/logins/' + username
     ).then((response) => {
         console.log(response);
         history.push("/login");

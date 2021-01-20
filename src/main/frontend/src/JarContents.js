@@ -13,7 +13,7 @@ import {useLocation} from "react-router";
 
 
 const jarID = parseInt(localStorage.getItem("jarID"));
-const username = localStorage.getItem('user');
+const username = localStorage.getItem('user').toLowerCase();
 const jar = JSON.parse(localStorage.getItem("jar"));
 
 function JarContents() {
@@ -66,7 +66,6 @@ function JarContents() {
 
     const donate = (event) => {
         event.preventDefault();
-        const username = window.localStorage.getItem('user');
         return axios.put('https://chrysenapi.com/api/jars/donate/' + username + "/" + jarID,  donation, {
             "headers": {
                 "content-type": "application/json",
@@ -90,7 +89,6 @@ function JarContents() {
 
     const withdraw = (event) => {
         event.preventDefault();
-        const username = window.localStorage.getItem('user');
         return axios.put('https://chrysenapi.com/api/jars/withdraw/' + username + "/" + jarID,  withdrawal, {
                 "headers": {
                     "content-type": "application/json",
