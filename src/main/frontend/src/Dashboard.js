@@ -42,7 +42,8 @@ const createJar = (event) => {
 const logOut = (event) => {
     event.preventDefault();
     const username = window.localStorage.getItem('user');
-    axios.delete('https://chrysenapi.com/api/logins/' + username
+
+    axios.delete('https://chrysenapi.com/api/logins/' + username.toLowerCase()
     ).then((response) => {
         console.log(response);
         history.push("/login");
