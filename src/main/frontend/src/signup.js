@@ -92,7 +92,7 @@ const Signup = () => {
                 {signupError && <p style={{color: 'red'}}>{signupError}</p>}
                 {successMessage && <p style={{color: 'green'}}>{successMessage}</p>}
             </form>
-            <img src={image} alt="jars" style = {{position: 'relative', top: -60}} width="auto" height="auto"/>
+            <img src={image} alt="jars" style = {{position: 'relative'}} width="auto" height="auto"/>
         </Wrapper>
     );
 };

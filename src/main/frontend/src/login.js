@@ -71,7 +71,7 @@ const Login = ({onLoginSuccess}) => {
                 <input type="submit" value="Submit" />
                 {loginError && <p style={{color: 'red'}}>{loginError}</p>}
             </form>
-            <img src={image} alt="jars" style= {{position: 'relative', top: -60}} width="auto" height="auto"/>
+            <img src={image} alt="jars" style= {{position: 'relative'}} width="auto" height="auto"/>
 
         </Wrapper>
     );
