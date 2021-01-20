@@ -26,7 +26,13 @@ function App()  {
                     </form>
                 </div>
             </div>
+            <Message message={""} />
+            <div style = {{position: 'relative', top: 190}}>
+                <Message message={"Created by Chrysen Park"} />
+            </div>
+
         </Wrapper>
+
     );
 }
 
