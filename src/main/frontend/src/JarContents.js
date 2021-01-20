@@ -13,8 +13,8 @@ import {useLocation} from "react-router";
 
 
 const jarID = parseInt(localStorage.getItem("jarID"));
-const username = localStorage.getItem('user').toLowerCase();
 const jar = JSON.parse(localStorage.getItem("jar"));
+const username = localStorage.getItem('user').toLowerCase();
 
 function JarContents() {
     const [jarInfo, setJarInfo] = useState(jar);
@@ -50,7 +50,6 @@ function JarContents() {
         });
     }, []);
 
-
     const openJar = () => {
         return axios
             .get('https://chrysenapi.com/api/jars/open/' + jarID)
@@ -66,6 +65,7 @@ function JarContents() {
 
     const donate = (event) => {
         event.preventDefault();
+        const username = localStorage.getItem('user').toLowerCase();
         return axios.put('https://chrysenapi.com/api/jars/donate/' + username + "/" + jarID,  donation, {
             "headers": {
                 "content-type": "application/json",
@@ -89,6 +89,7 @@ function JarContents() {
 
     const withdraw = (event) => {
         event.preventDefault();
+        const username = localStorage.getItem('user').toLowerCase();
         return axios.put('https://chrysenapi.com/api/jars/withdraw/' + username + "/" + jarID,  withdrawal, {
                 "headers": {
                     "content-type": "application/json",
@@ -124,7 +125,7 @@ function JarContents() {
 
     const shareJar = (event) => {
         event.preventDefault();
-        return axios.post('https://chrysenapi.com/api/jars/share/' + jarID, contributor, {
+        return axios.post('https://chrysenapi.com/api/jars/share/' + jarID, contributor.toLowerCase(), {
                 "headers": {
                     "content-type": "application/json",
                 },
@@ -168,6 +169,7 @@ function JarContents() {
 
     const deleteJar = (event) => {
         event.preventDefault();
+        const username = localStorage.getItem('user').toLowerCase();
         axios.delete('https://chrysenapi.com/api/jars/' + username + '/' + jarID
         ).then((response) => {
             history.push("/dashboard");
