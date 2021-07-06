@@ -1,0 +1,15 @@
+{
+  "thejarbar": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-thejarbar-thejarbar-151237-authRole",
+      "UnauthRoleArn": "arn:aws:iam::150070366488:role/amplify-thejarbar-thejarbar-151237-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::150070366488:role/amplify-thejarbar-thejarbar-151237-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-thejarbar-thejarbar-151237-deployment",
+      "UnauthRoleName": "amplify-thejarbar-thejarbar-151237-unauthRole",
+      "StackName": "amplify-thejarbar-thejarbar-151237",
+      "StackId": "arn:aws:cloudformation:us-east-2:150070366488:stack/amplify-thejarbar-thejarbar-151237/01d15620-60dc-11eb-b5d8-0ab5cb839b70",
+      "AmplifyAppId": "d18oh0hpd9scyi"
+    }
+  }
+}
