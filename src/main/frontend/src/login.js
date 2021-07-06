@@ -7,6 +7,8 @@ import {useLocation} from "react-router";
 import Button from "./Components/Buttons";
 import image from "./SaveUpPage.png";
 
+const http = 'https://chrysenapi.com/api/';
+
 const Login = ({onLoginSuccess}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -25,7 +27,7 @@ const Login = ({onLoginSuccess}) => {
 
     const logIn = (event) => {
         event.preventDefault();
-        axios.post('https://chrysenapi.com/api/login/', {
+        axios.post(http + 'login/', {
             username: username,
             password: password,
         }).then((response) => {

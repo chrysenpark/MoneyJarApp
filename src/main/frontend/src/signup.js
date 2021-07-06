@@ -8,6 +8,7 @@ import history from "./history";
 import {useLocation} from "react-router";
 import image from "./SaveUpPage.png";
 
+const http = 'https://chrysenapi.com/api/';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -28,7 +29,7 @@ const Signup = () => {
 
     const signUp = (event) => {
         event.preventDefault();
-        axios.post('https://chrysenapi.com/api/users', {
+        axios.post(http + 'users', {
             email: email,
             username: username,
             password: password,

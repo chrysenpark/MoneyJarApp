@@ -2,6 +2,7 @@ package com.chrysen.Dao;
 import com.chrysen.Entity.Connection;
 import com.chrysen.Entity.Transaction;
 import com.chrysen.Entity.Jar;
+import com.chrysen.Exceptions.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -91,6 +92,7 @@ public class JarDao {
         final String user = username;
         int currAmount = jdbcTemplate.queryForObject(sql2, new Object[]{jarID}, Integer.class);
         int sum  = currAmount - amount;
+        if(sum < 0) throw new ApiRequestException("Not Enough Money in Jar");
         jdbcTemplate.update(dSQL, new Object[] {jarID, "W", amount, user, date});
         jdbcTemplate.update(sql, new Object[] {sum, jarID});
     }

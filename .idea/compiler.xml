@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="LoginRecyclingProject" />
         <module name="MoneyJarApp" />
+        <module name="LoginRecyclingProject" />
       </profile>
     </annotationProcessing>
   </component>

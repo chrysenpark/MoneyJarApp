@@ -14,7 +14,7 @@ import {useLocation} from "react-router";
 
 const jarID = parseInt(localStorage.getItem("jarID"));
 const jar = JSON.parse(localStorage.getItem("jar"));
-const username = localStorage.getItem('user').toLowerCase();
+const http = 'https://chrysenapi.com/api/';
 
 function JarContents() {
     const [jarInfo, setJarInfo] = useState(jar);
@@ -27,8 +27,11 @@ function JarContents() {
     const [shareSuccess, setShareSuccess] = useState(null);
     const [renameSuccess, setRenameSuccess] = useState(null);
     const [donateSuccess, setDonateSuccess] = useState(null);
+    const [donateError, setDonateError] = useState(null);
     const [withdrawSuccess, setWithdrawSuccess] = useState(null);
+    const [withdrawError, setWithdrawalError] = useState(null);
 
+    const username = localStorage.getItem('user').toLowerCase();
     const location = useLocation();
 
     useEffect(() => {
@@ -52,7 +55,7 @@ function JarContents() {
 
     const openJar = () => {
         return axios
-            .get('https://chrysenapi.com/api/jars/open/' + jarID)
+            .get(http + '/jars/open/' + jarID)
             .then((response) => {
                 console.log(response.data);
                 return response.data;
@@ -66,7 +69,7 @@ function JarContents() {
     const donate = (event) => {
         event.preventDefault();
         const username = localStorage.getItem('user').toLowerCase();
-        return axios.put('https://chrysenapi.com/api/jars/donate/' + username + "/" + jarID,  donation, {
+        return axios.put(http + '/jars/donate/' + username + "/" + jarID,  donation, {
             "headers": {
                 "content-type": "application/json",
             },
@@ -83,14 +86,14 @@ function JarContents() {
             window.location.reload();
             console.log(response);
         }).catch((err) => {
-            console.log(err);
+            setDonateError(err.response.data.message);
         });
     };
 
     const withdraw = (event) => {
         event.preventDefault();
         const username = localStorage.getItem('user').toLowerCase();
-        return axios.put('https://chrysenapi.com/api/jars/withdraw/' + username + "/" + jarID,  withdrawal, {
+        return axios.put(http + 'jars/withdraw/' + username + "/" + jarID,  withdrawal, {
                 "headers": {
                     "content-type": "application/json",
                 },
@@ -107,14 +110,14 @@ function JarContents() {
             window.location.reload();
             console.log(response);
         }).catch((err) => {
-            console.log(err);
+            setWithdrawalError(err.response.data.message);
         });
     };
 
 
     const getTransactions = () => {
         return axios
-            .get('https://chrysenapi.com/api/jars/transactions/' + jarID)
+            .get(http + 'jars/transactions/' + jarID)
             .then((response) => {
                 console.log(response.data);
                 return response.data;
@@ -125,7 +128,7 @@ function JarContents() {
 
     const shareJar = (event) => {
         event.preventDefault();
-        return axios.post('https://chrysenapi.com/api/jars/share/' + jarID, contributor.toLowerCase(), {
+        return axios.post(http + 'jars/share/' + jarID, contributor.toLowerCase(), {
                 "headers": {
                     "content-type": "application/json",
                 },
@@ -146,7 +149,7 @@ function JarContents() {
 
     const renameJar = (event) => {
         event.preventDefault();
-        return axios.put('https://chrysenapi.com/api/jars/rename/' + jarID, rename, {
+        return axios.put(http + 'jars/rename/' + jarID, rename, {
                 "headers": {
                     "content-type": "application/json",
                 },
@@ -170,7 +173,7 @@ function JarContents() {
     const deleteJar = (event) => {
         event.preventDefault();
         const username = localStorage.getItem('user').toLowerCase();
-        axios.delete('https://chrysenapi.com/api/jars/' + username + '/' + jarID
+        axios.delete(http + 'jars/' + username + '/' + jarID
         ).then((response) => {
             history.push("/dashboard");
             //localStorage.removeItem('jar');
@@ -265,6 +268,7 @@ function JarContents() {
                 <Button type ="button"  buttonStyle="btn--rank--solid" buttonSize="btn-small" onClick={donate}>
                     Donate
                 </Button>
+                {donateError && <p style={{color: 'red'}}>{donateError}</p>}
                 {donateSuccess && <p style={{color: 'green'}}>{donateSuccess}</p>}
             </div>
             <Message message={""} />
@@ -279,6 +283,7 @@ function JarContents() {
                 <Button type="button" buttonStyle="btn--primary--solid" buttonSize="btn-small" onClick={withdraw}>
                     Withdraw
                 </Button>
+                {withdrawError && <p style={{color: 'red'}}>{withdrawError}</p>}
                 {withdrawSuccess && <p style={{color: 'green'}}>{withdrawSuccess}</p>}
             </div>}
             <Message message={""} />

@@ -27,8 +27,9 @@ function App()  {
                 </div>
             </div>
             <Message message={""} />
-            <div style = {{position: 'relative', top: 190}}>
+            <div style = {{position: 'relative', top: 180}}>
                 <Message message={"Created by Chrysen Park"} />
+                <Message message={"© 2021 TheJarBar"} />
             </div>
 
         </Wrapper>

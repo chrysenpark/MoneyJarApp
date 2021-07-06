@@ -7,10 +7,12 @@ import Wrapper from "./Components/Wrapper";
 import Message from "./Components/Message";
 import Title from "./Components/Title";
 
+const http = 'https://chrysenapi.com/api/';
+
 const getUsersJars = () => {
     const username = window.localStorage.getItem('user').toLowerCase();
     return axios
-        .get('https://chrysenapi.com/api/jars/' + username)
+        .get(http + 'jars/' + username)
         .then((jars) => {
             console.log(jars.data);
             return jars.data;
@@ -23,7 +25,7 @@ const createJar = (event) => {
     event.preventDefault();
     const username = window.localStorage.getItem('user').toLowerCase();
     return axios
-        .post('https://chrysenapi.com/api/jars/create/' + username,
+        .post(http + 'jars/create/' + username,
             'untitled', {
                 "headers": {
                     "content-type": "application/json",
@@ -41,7 +43,7 @@ const createJar = (event) => {
 const logOut = (event) => {
     event.preventDefault();
     const username = window.localStorage.getItem('user').toLowerCase();
-    axios.delete('https://chrysenapi.com/api/logins/' + username
+    axios.delete(http + 'logins/' + username
     ).then((response) => {
         console.log(response);
         history.push("/login");
