@@ -46,7 +46,7 @@
     ]
   },
   "devDependencies": {
-    "aws-amplify": "^3.4.3",
+    "aws-amplify": "^3.3.14",
     "lodash-es": "^4.17.15"
   }
 }
