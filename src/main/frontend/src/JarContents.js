@@ -81,8 +81,8 @@ function JarContents() {
                 'Successfully donated!',
             );
             setDonateSuccess(message);
-            //jarInfo.amount = parseInt(jarInfo.amount) + parseInt(donation);
-            //localStorage.setItem('jar', JSON.stringify(jarInfo));
+            jarInfo.amount = parseInt(jarInfo.amount) + parseInt(donation);
+            localStorage.setItem('jar', JSON.stringify(jarInfo));
             window.location.reload();
             console.log(response);
         }).catch((err) => {
@@ -105,8 +105,8 @@ function JarContents() {
                 'Successfully withdrawn!',
             );
             setWithdrawSuccess(message);
-            //jarInfo.amount = parseInt(jarInfo.amount) - parseInt(withdrawal);
-            //localStorage.setItem('jar', JSON.stringify(jarInfo));
+            jarInfo.amount = parseInt(jarInfo.amount) - parseInt(withdrawal);
+            localStorage.setItem('jar', JSON.stringify(jarInfo));
             window.location.reload();
             console.log(response);
         }).catch((err) => {
@@ -161,8 +161,8 @@ function JarContents() {
                 'Successfully renamed!',
             );
             setRenameSuccess(message);
-            //jarInfo.name = rename;
-            //localStorage.setItem('jar', JSON.stringify(jarInfo));
+            jarInfo.name = rename;
+            localStorage.setItem('jar', JSON.stringify(jarInfo));
             window.location.reload();
             console.log(response);
         }).catch((err) => {
